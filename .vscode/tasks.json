@@ -1,0 +1,27 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cmake",
+			"label": "CMake: build",
+			"command": "build",
+			"targets": [
+				"all"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"detail": "CMake template build task"
+		},
+		{
+			"type":"shell",
+			"label": "Flash App",
+			"dependsOn": "CMake: build",
+			"command": "python3 ${workspaceFolder}/coralmicro/scripts/flashtool.py --build_dir ${workspaceFolder}/build --elf_path ${workspaceFolder}/build/coralmicro-app",
+			"problemMatcher": [],
+			"detail": "Flash application through NXP flash loader (USB)"
+		}
+	]
+}
